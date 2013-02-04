@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<skin>
+	
+	<name>adminFB</name>
+	<skintype>backofficeskin</skintype>
+	<description>Basic backoffice FB interface</description>
+	
+</skin>
