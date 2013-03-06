@@ -52,9 +52,8 @@
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/ajaxAidoo/script.js"></script>
 				
 		<!-- Bootstrap twitter -->
-		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="all" />
-		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="all" />
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/js/bootstrap.min.js"></script>
+		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.2.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.2.2/js/bootstrap.min.js"></script>
 		
 		<!--  Alerts  -->
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/sexyalert/sexyalertbox.v1.2.jquery.js"></script>
