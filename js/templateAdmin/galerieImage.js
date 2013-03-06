@@ -351,7 +351,7 @@ $(document).ready(function(){
 		$("#image").val("");
 		$("#image2").val("");
 		imageCancelImage();
-		if ($("#image2").length > 0)
+		if ($("#image2").length > 0 && typeof window.image2CancelImage == 'function')
 			image2CancelImage();
 		$("#description").val("");
 		$("#bg_color_image").val("");
