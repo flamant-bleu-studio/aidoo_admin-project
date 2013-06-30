@@ -17,7 +17,7 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{$smarty.const.CURRENT_LANG_CODE}">
 	<head>
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -26,9 +26,7 @@
 			var skinUrl = "{$skinUrl}";
 		</script>
 		
-		{$headTitle}
-		
-				<!-- Bootstrap twitter -->
+		<!-- Bootstrap twitter -->
 		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.2.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.2.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery-1.7.1.min.js"></script>

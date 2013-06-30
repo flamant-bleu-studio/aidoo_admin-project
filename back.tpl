@@ -17,11 +17,10 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 *}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{$smarty.const.CURRENT_LANG_CODE}">
 	<head>
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
-		{$headTitle}
 		
 		<link rel="icon" type="image/png" href="{$baseUrl}{$skinUrl}/images/favicon_{$smarty.const.ADMIN_SKIN}.png" />
 		
@@ -31,7 +30,7 @@
 			
 			var defaultLangId 	= {$smarty.const.DEFAULT_LANG_ID};
 			var defaultLangCode = "{$smarty.const.DEFAULT_LANG_CODE}";
-			var ajax_apiKey 	= "{$ajax_apiKey}";
+			{if isset($ajax_apiKey)}var ajax_apiKey 	= "{$ajax_apiKey}";{/if}
 			var commonLibUrl = "{$smarty.const.COMMON_LIB_PATH}";
 		</script>
 
@@ -124,13 +123,6 @@
 		</script>		
 		{/literal}
 		
-		<!-- TinyMCE -->
-		{$AppendTinyMCE}
-		<!-- ImageManager -->
-		{$AppendImageManager}
-		<!-- FileManager -->
-		{$AppendFileManager}
-		
 		{AppendJsFiles}
 		{AppendJsScripts}
 		
@@ -140,8 +132,7 @@
 	</head>
 	
 <body>
-{if $user->group->id == 1 || $user->group->id == 6 || $user->group->id == 5}
-{if $multi_site_select}
+{if isset($multi_site_select) && ($user->group->id == 1 || $user->group->id == 6 || $user->group->id == 5)}
 	<div class="navbar navbar-fixed-top" style="margin-bottom: 40px;">
 		<div class="navbar-inner" style="text-align: center;">
 			<form action="#">
@@ -161,7 +152,6 @@
 	</div>
 
 	<div style="height: 40px;"></div>
-{/if}
 {/if}
 
 	<div id="main" class="container">
@@ -209,7 +199,7 @@
 					<div class="container">
 						<ul class="nav nav-pills">
 							{foreach from=$adminMenu item=menuItem key=k name=menu}
-								{if $menuItem['children']} <!-- au moins 1 children -->
+								{if isset($menuItem['children'])} <!-- au moins 1 children -->
 									{if $menuItem['children']|@count > 1} <!-- + de 1 children -->
 										<li class="dropdown" id="menu1">
 											<a class="dropdown-toggle" data-toggle="dropdown" href="#">{$menuItem.title} <b class="caret"></b> </a>
@@ -223,7 +213,7 @@
 										<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName}">{$menuItem.title}</a></li>
 									{/if}
 								{else} <!-- no children -->
-									{if $menuItem.routeName} <!-- Dipose de route -->
+									{if isset($menuItem.routeName)} <!-- Dipose de route -->
 										<li><a href="{routeFull route=$menuItem.routeName controller=$menuItem.controllerName}">{$menuItem.title}</a></li>
 									{/if}
 								{/if}
@@ -233,9 +223,7 @@
 				</div>
 			</div>
 			
-			{if $adminMenu[$activeMenu]['children']}
-				{if ($adminMenu[$activeMenu]['children']|@count) > 1}
-				
+			{if isset($activeMenu) && isset($adminMenu[$activeMenu]['children']) && ($adminMenu[$activeMenu]['children']|@count) > 1}
 			<div id="nav_rubrique">
 				<div class="container">				
 					<ul class="nav nav-pills">
@@ -250,9 +238,6 @@
 				</div>
 
 			</div>					
-					
-					
-				{/if}
 			{/if}
 			
 

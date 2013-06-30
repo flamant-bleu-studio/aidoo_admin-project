@@ -27,6 +27,8 @@
 			
 			var defaultLangId 	= {$smarty.const.DEFAULT_LANG_ID};
 			var defaultLangCode = "{$smarty.const.DEFAULT_LANG_CODE}";
+			{if isset($ajax_apiKey)}var ajax_apiKey 	= "{$ajax_apiKey}";{/if}
+			var commonLibUrl = "{$smarty.const.COMMON_LIB_PATH}";
 		</script>
 
 		<!-- JQuery Libs -->
@@ -59,12 +61,7 @@
 		{appendFile type="css" src="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/styles.css"}
 
 		<script> var datatable_lang_file =  "{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/lang/fr.lang"; </script>	
-		
-		<!-- TinyMCE -->
-		{$AppendTinyMCE}
-		<!-- ImageManager -->
-		{$AppendImageManager}
-	
+			
 		{AppendJsFiles}
 		{AppendJsScripts}
 	
