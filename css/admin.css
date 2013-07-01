@@ -487,9 +487,9 @@ float: right;
 width: 62px;
 }
 
-/*zone template*/
+/* zone template */
 #template {
-width: 622px;
+width: 695px;
 padding: 10px;
 border: 1px solid #a5caf0;
 background: #d7eaee;
@@ -499,55 +499,102 @@ background: #d7eaee;
 border: 1px solid #5eb0ec;
 background: #c7e2ec;
 }
+.droppable:hover {
+border: 1px solid #5eb0ec;
+background: #c7e2ec;
+}
 
-#t_header1, #t_header2, #t_footer1, #t_footer2 {
-height: 60px;
+#template .droppable.horizontal {
+min-height: 62px;
+}
+
+/* Permet le passage à la ligne des blocs dans les placeholders horizontaux */
+#template .droppable.horizontal:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+#template .droppable.horizontal {
+    zoom: 1;
+}
+
+#template .horizontal {
 margin-bottom: 5px;
 }
 
-#t_sideleft1, #t_sideright1 {
-float: left;
-width: 58px;
-height: 285px;
+
+
+#template .droppable.vertical {
+width: 62px;
+}
+
+#template .vertical, #t_contentmore {
 margin-right: 5px;
-margin-bottom: 5px;
 }
 
-#t_sideright1 {
+#template .nomarge {
 margin-right: 0px;
+margin-bottom: 0px;
+}
+
+
+#t_middle {
+display: -webkit-box;
+display: -moz-box;
+display: -o-box;
+display: -ms-box;
+display: box;
+width: 673px;
 }
 
 #t_center {
-float: left;
-width: 469px;
-height: 200px;
-margin-right: 5px;
+display: -webkit-box;
+display: -moz-box;
+display: -o-box;
+display: -ms-box;
+display: box;
+-webkit-box-orient: vertical;
+-moz-box-orient: vertical;
+-o-box-orient: vertical;
+-ms-box-orient: vertical;
+box-orient: vertical;
+
+-webkit-box-flex: 1;
+-moz-box-flex: 1;
+-o-box-flex: 1;
+-ms-box-flex: 1;
+flex: 1;
+
 }
 
-#t_contenttop, #t_contentbottom  {
-height: 60px;
-margin-bottom: 5px;
+#t_content {
+display: -webkit-box;
+display: -moz-box;
+display: -o-box;
+display: -ms-box;
+display: box;
+
+-webkit-box-flex: 1;
+-moz-box-flex: 1;
+-o-box-flex: 1;
+-ms-box-flex: 1;
+flex: 1;
 }
 
-#t_contentleft, #t_contentright {
-width: 58px;	
-}
-
-#t_contentleft, #t_contentright, #t_content, #t_contentmore {
-float: left;
-height: 150px;
-margin-bottom: 5px;
-margin-right: 5px;
-}
-
-#t_contentright{
-margin-right: 0;
-}
-
-#t_content, #t_contentmore {
-width: 336px;
+#t_contentmore {
 background-color: #b0c5d1;
+-webkit-box-flex: 1;
+-moz-box-flex: 1;
+-o-box-flex: 1;
+-ms-box-flex: 1;
+flex: 1;
+min-height: 150px;
 }
+
 
 #template .info_ph {
 text-align: center;
@@ -559,7 +606,6 @@ width: 40px;
 height: 40px;
 margin: 5px;
 padding:5px;
-float: left;
 cursor: move;
 font-size: 9px;
 overflow: hidden;
@@ -571,6 +617,11 @@ line-height: 9px;
 -moz-border-radius: 5px;
 border-radius: 5px;
 color:#000;
+}
+
+/* les items des placeholders verticaux ne doivent pas être flotant (bugfix avec jQuery Sortable) */
+.horizontal > .template_item {
+float: left;
 }
 
 .template_item:hover {

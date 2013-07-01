@@ -121,7 +121,9 @@
     			cursor: 'move', 
     			connectWith: oPlaceholders,
     			items: 'div.template_item',
-    			placeholder: 'ui-sortable-zone'
+    			placeholder: 'ui-sortable-zone',
+    			distance: 10,
+    			cursorAt: {top:20, left: 30}
     		}).disableSelection(); 
         	
         	// ACCORDEON LISTE BLOC
