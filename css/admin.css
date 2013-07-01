@@ -500,7 +500,7 @@ border: 1px solid #5eb0ec;
 background: #c7e2ec;
 }
 
-#t_header1, #t_header2, #t_footer1, #t_footer2 {
+#t_header1, #t_header2, #t_header3, #t_footer1, #t_footer2, #t_footer3 {
 height: 60px;
 margin-bottom: 5px;
 }
