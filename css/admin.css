@@ -499,10 +499,6 @@ background: #d7eaee;
 border: 1px solid #5eb0ec;
 background: #c7e2ec;
 }
-.droppable:hover {
-border: 1px solid #5eb0ec;
-background: #c7e2ec;
-}
 
 #template .droppable.horizontal {
 min-height: 62px;
@@ -594,7 +590,6 @@ background-color: #b0c5d1;
 flex: 1;
 min-height: 150px;
 }
-
 
 #template .info_ph {
 text-align: center;
