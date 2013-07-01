@@ -205,15 +205,19 @@
 											<a class="dropdown-toggle" data-toggle="dropdown" href="#">{$menuItem.title} <b class="caret"></b> </a>
 											<ul class="dropdown-menu">
 												{foreach from=$menuItem['children'] item=menuSubItem name=subMenu}
-													<li><a href="{routeFull route=$menuSubItem.routeName controller=$menuSubItem.controllerName action=$menuSubItem.actionName}">&nbsp;{$menuSubItem.title}</a></li>
+													{if isset($menuSubItem.routeName)}
+														<li><a href="{routeFull route=$menuSubItem.routeName controller=$menuSubItem.controllerName action=$menuSubItem.actionName}">&nbsp;{$menuSubItem.title}</a></li>
+													{/if}
 												{/foreach}
 											</ul>
 										</li>
 									{else} <!-- 1 children -->
-										<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName action=$menuItem['children'][0].actionName}">{$menuItem.title}</a></li>
+										{if isset($menuItem['children'][0].routeName)}
+											<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName action=$menuItem['children'][0].actionName}">{$menuItem.title}</a></li>
+										{/if}
 									{/if}
 								{else} <!-- no children -->
-									{if $menuItem.routeName} <!-- Dipose de route -->
+									{if isset($menuItem.routeName)} <!-- Dipose de route -->
 										<li><a href="{routeFull route=$menuItem.routeName controller=$menuItem.controllerName action=$menuItem.actionName}">{$menuItem.title}</a></li>
 									{/if}
 								{/if}
@@ -228,11 +232,13 @@
 				<div class="container">				
 					<ul class="nav nav-pills">
 						{foreach from=$adminMenu[$activeMenu]['children'] item=subMenu name=subMenu2}
-							<li {if $subMenu.title == $titleSubMenu}class="active"{/if}>
-								<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName action=$subMenu.actionName}">
-								{$subMenu.title}
-								</a>
-							</li>
+							{if isset($subMenu.routeName)}
+								<li {if $subMenu.title == $titleSubMenu}class="active"{/if}>
+									<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName action=$subMenu.actionName}">
+									{$subMenu.title}
+									</a>
+								</li>
+							{/if}
 						{/foreach}
 					</ul>
 				</div>
