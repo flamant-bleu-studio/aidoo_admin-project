@@ -205,16 +205,16 @@
 											<a class="dropdown-toggle" data-toggle="dropdown" href="#">{$menuItem.title} <b class="caret"></b> </a>
 											<ul class="dropdown-menu">
 												{foreach from=$menuItem['children'] item=menuSubItem name=subMenu}
-													<li><a href="{routeFull route=$menuSubItem.routeName controller=$menuSubItem.controllerName}">&nbsp;{$menuSubItem.title}</a></li>
+													<li><a href="{routeFull route=$menuSubItem.routeName controller=$menuSubItem.controllerName action=$menuSubItem.actionName}">&nbsp;{$menuSubItem.title}</a></li>
 												{/foreach}
 											</ul>
 										</li>
 									{else} <!-- 1 children -->
-										<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName}">{$menuItem.title}</a></li>
+										<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName action=$menuItem['children'][0].actionName}">{$menuItem.title}</a></li>
 									{/if}
 								{else} <!-- no children -->
-									{if isset($menuItem.routeName)} <!-- Dipose de route -->
-										<li><a href="{routeFull route=$menuItem.routeName controller=$menuItem.controllerName}">{$menuItem.title}</a></li>
+									{if $menuItem.routeName} <!-- Dipose de route -->
+										<li><a href="{routeFull route=$menuItem.routeName controller=$menuItem.controllerName action=$menuItem.actionName}">{$menuItem.title}</a></li>
 									{/if}
 								{/if}
 							{/foreach}
@@ -229,7 +229,7 @@
 					<ul class="nav nav-pills">
 						{foreach from=$adminMenu[$activeMenu]['children'] item=subMenu name=subMenu2}
 							<li {if $subMenu.title == $titleSubMenu}class="active"{/if}>
-								<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName}">
+								<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName action=$subMenu.actionName}">
 								{$subMenu.title}
 								</a>
 							</li>
