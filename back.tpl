@@ -205,20 +205,26 @@
 											<a class="dropdown-toggle" data-toggle="dropdown" href="#">{$menuItem.title} <b class="caret"></b> </a>
 											<ul class="dropdown-menu">
 												{foreach from=$menuItem['children'] item=menuSubItem name=subMenu}
-													{if isset($menuSubItem.routeName)}
+													{if isset($menuSubItem.routeName) && isset($menuSubItem.actionName)}
 														<li><a href="{routeFull route=$menuSubItem.routeName controller=$menuSubItem.controllerName action=$menuSubItem.actionName}">&nbsp;{$menuSubItem.title}</a></li>
+													{else if isset($menuSubItem.routeName) && !isset($menuSubItem.actionName)}
+														<li><a href="{routeFull route=$menuSubItem.routeName controller=$menuSubItem.controllerName}">&nbsp;{$menuSubItem.title}</a></li>
 													{/if}
 												{/foreach}
 											</ul>
 										</li>
 									{else} <!-- 1 children -->
-										{if isset($menuItem['children'][0].routeName)}
+										{if isset($menuItem['children'][0].routeName) && isset($menuItem['children'][0].actionName)}
 											<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName action=$menuItem['children'][0].actionName}">{$menuItem.title}</a></li>
+										{else if isset($menuItem['children'][0].routeName) && !isset($menuItem['children'][0].actionName)}
+											<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName}">{$menuItem.title}</a></li>
 										{/if}
 									{/if}
 								{else} <!-- no children -->
-									{if isset($menuItem.routeName)} <!-- Dipose de route -->
+									{if isset($menuItem.routeName) && isset($menuItem.actionName)} <!-- Dipose de route -->
 										<li><a href="{routeFull route=$menuItem.routeName controller=$menuItem.controllerName action=$menuItem.actionName}">{$menuItem.title}</a></li>
+									{else if isset($menuItem.routeName) && !isset($menuItem.actionName)}
+										<li><a href="{routeFull route=$menuItem.routeName controller=$menuItem.controllerName}">{$menuItem.title}</a></li>
 									{/if}
 								{/if}
 							{/foreach}
@@ -234,7 +240,11 @@
 						{foreach from=$adminMenu[$activeMenu]['children'] item=subMenu name=subMenu2}
 							{if isset($subMenu.routeName)}
 								<li {if $subMenu.title == $titleSubMenu}class="active"{/if}>
-									<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName action=$subMenu.actionName}">
+									{if isset($subMenu.actionName)}
+										<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName action=$subMenu.actionName}">
+									{else}
+										<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName}">
+									{/if}
 									{$subMenu.title}
 									</a>
 								</li>
