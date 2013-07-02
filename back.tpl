@@ -20,20 +20,23 @@
 <html lang="{$smarty.const.CURRENT_LANG_CODE}">
 	<head>
 		<meta charset="utf-8">
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link rel="icon" type="image/png" href="{$baseUrl}{$skinUrl}/images/favicon_{$smarty.const.ADMIN_SKIN}.png" />
 		
 		<script type="text/javascript">
 			var baseUrl = "{$baseUrl}";
 			var skinUrl = "{$skinUrl}";
+			var commonLibUrl = "{$smarty.const.COMMON_LIB_PATH}";
 			
 			var defaultLangId 	= {$smarty.const.DEFAULT_LANG_ID};
 			var defaultLangCode = "{$smarty.const.DEFAULT_LANG_CODE}";
-			{if isset($ajax_apiKey)}var ajax_apiKey 	= "{$ajax_apiKey}";{/if}
-			var commonLibUrl = "{$smarty.const.COMMON_LIB_PATH}";
+			
+			{if isset($ajax_apiKey)}
+				var ajax_apiKey = "{$ajax_apiKey}";
+			{/if}
 		</script>
-
+		
 		<!-- JQuery Libs -->
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery-1.7.1.min.js"></script>
 		
@@ -47,12 +50,15 @@
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.localscroll-min.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.cycle.all.min.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.mousewheel-3.0.4.pack.js"></script>
-				
+		
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/ajaxAidoo/script.js"></script>
 				
 		<!-- Bootstrap twitter -->
-		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.2.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.2.2/js/bootstrap.min.js"></script>
+		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/js/bootstrap.min.js"></script>
+		
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="{$smarty.const.COMMON_LIB_PATH}/lib/font-awesome/v3.2.1/css/font-awesome.min.css">
 		
 		<!--  Alerts  -->
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/sexyalert/sexyalertbox.v1.2.jquery.js"></script>
@@ -68,13 +74,10 @@
 		
 		<link href="{$baseUrl}{$skinUrl}/css/admin.css" media="screen" rel="stylesheet" type="text/css" />
 		
-		<!-- 	fragment HTML -->
+		<!-- fragment HTML -->
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/jqueryBBQ/script.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/fragmentHTML/script.js"></script>
 		
-		<!-- jquery flot -->
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/flot/jquery.flot.js"></script>
-				
 		{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/jquery.dataTables.min.js"}
 		{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/dataTables.plugins.js"}
 		
@@ -132,6 +135,88 @@
 	</head>
 	
 <body>
+
+<!-- TOP MENU -->
+
+{function name=classActiveLinkMenu item=item}
+	{if isset($adminMenu[$activeMenu]) && $adminMenu[$activeMenu]['title'] == $item.title}class="active"{/if}
+{/function}
+
+{function name=generateLinkMenu item=item}
+	{if isset($item.routeName) && isset($item.actionName)}
+		<li {classActiveLinkMenu item=$item}>
+			<a href="{routeFull route=$item.routeName controller=$item.controllerName action=$item.actionName}">{$item.title}</a>
+		</li>
+	{else if isset($item.routeName)}
+		<li {classActiveLinkMenu item=$item}>
+			<a href="{routeFull route=$item.routeName controller=$item.controllerName}">{$item.title}</a>
+		</li>
+	{/if}
+{/function}
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="{routeFull route="admin" controller="back" action="index"}">Administration</a>
+			
+			<ul class="nav pull-left">
+				{foreach from=$adminMenu item=menuItem key=k name=menu}
+					{if isset($menuItem['children'])} <!-- au moins 1 children -->
+						{if $menuItem['children']|@count > 1} <!-- + de 1 children -->
+							<li class="dropdown {if isset($adminMenu[$activeMenu]) && $adminMenu[$activeMenu]['title'] == {$menuItem.title}}active{/if}">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{$menuItem.title} <b class="caret"></b> </a>
+								<ul class="dropdown-menu">
+									{foreach from=$menuItem['children'] item=menuSubItem name=subMenu}
+										{generateLinkMenu item=$menuSubItem}
+									{/foreach}
+								</ul>
+							</li>
+						{else} <!-- 1 children -->
+							{generateLinkMenu item=$menuItem['children'][0]}
+						{/if}
+					{else} <!-- no children -->
+						{generateLinkMenu item=$menuItem}
+					{/if}
+				{/foreach}
+			</ul>
+			
+			<ul class="nav pull-right">
+				<li class="divider-vertical"></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						{$user->email}
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href='{routeFull route="users_back" action="edit-user" id="{$user->id}"}'>
+								{t}My profil{/t}
+							</a>
+						</li>
+						<li>
+							<a href='{routeFull route="front"}' target="_blank">
+								{t}My website{/t}
+							</a>
+						</li>
+						<li>
+							<a href='{routeFull route="admin_logout"}'>
+								{t}Logout{/t}
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			
+			<form class="navbar-search pull-right" action="{routeFull route='search_query_back'}">
+				<input type="text" class="search-query span2" placeholder="{t}Keywords...{/t}">
+			</form>
+			
+		</div>
+	</div>
+</div>
+
+<!-- / TOP MENU -->
+
 {if isset($multi_site_select) && ($user->group->id == 1 || $user->group->id == 6 || $user->group->id == 5)}
 	<div class="navbar navbar-fixed-top" style="margin-bottom: 40px;">
 		<div class="navbar-inner" style="text-align: center;">
@@ -150,138 +235,34 @@
 			</form>
 		</div>
 	</div>
-
-	<div style="height: 40px;"></div>
 {/if}
 
-	<div id="main" class="container">
-		<div id="head">
-
-				<div class="row-fluid">
-					
-					<div id="bloc_user"  class="span4">
-						<a href='{routeFull route="admin"}'><img src="{$baseUrl}{$skinUrl}/images/logo_{$smarty.const.ADMIN_SKIN}.png" /></a>
-						<span>{$user->email}<br/>
-						Statut : {$user->group->name}</span>
-					</div>
-					
-					<div id="bloc_search" class="span3">
-						<form method="post" action="{routeFull route='search_query_back'}" class="form-search">
-							<input type="text" name="search" id="search" placeholder="{t}Keywords...{/t}" />
-							<button class="btn btn-primary"><i class="icon icon-search icon-white"></i></button>
-						</form>
-					</div>
-					
-					<div id="boutons" class="span5">
-						
-						<a class="btn" id="votre_profil" href='{routeFull route="users_back" action="edit-user" id="{$user->id}"}'>
-							<i class="icon-user"></i>
-							{t}VOTRE PROFIL{/t}
-						</a>
-						<a class="btn" id="votre_site" href='{routeFull route="front"}' target='_blank'>
-							<i class="icon-home"></i>
-							{t}VOTRE SITE{/t}
-						</a>
-						<a class="btn" id="deconnect" href='{routeFull route="admin_logout"}'>
-							<i class="icon-off"></i>
-							{t}DECONNEXION{/t}
-						</a>
-					</div>
-					
-				</div>
-
-		</div>
-			
-		<div class="container">
-			
-			<div id="main_menu"  class="navbar">
-				 <div class="navbar-inner">
-					<div class="container">
-						<ul class="nav nav-pills">
-							{foreach from=$adminMenu item=menuItem key=k name=menu}
-								{if isset($menuItem['children'])} <!-- au moins 1 children -->
-									{if $menuItem['children']|@count > 1} <!-- + de 1 children -->
-										<li class="dropdown" id="menu1">
-											<a class="dropdown-toggle" data-toggle="dropdown" href="#">{$menuItem.title} <b class="caret"></b> </a>
-											<ul class="dropdown-menu">
-												{foreach from=$menuItem['children'] item=menuSubItem name=subMenu}
-													{if isset($menuSubItem.routeName) && isset($menuSubItem.actionName)}
-														<li><a href="{routeFull route=$menuSubItem.routeName controller=$menuSubItem.controllerName action=$menuSubItem.actionName}">&nbsp;{$menuSubItem.title}</a></li>
-													{else if isset($menuSubItem.routeName) && !isset($menuSubItem.actionName)}
-														<li><a href="{routeFull route=$menuSubItem.routeName controller=$menuSubItem.controllerName}">&nbsp;{$menuSubItem.title}</a></li>
-													{/if}
-												{/foreach}
-											</ul>
-										</li>
-									{else} <!-- 1 children -->
-										{if isset($menuItem['children'][0].routeName) && isset($menuItem['children'][0].actionName)}
-											<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName action=$menuItem['children'][0].actionName}">{$menuItem.title}</a></li>
-										{else if isset($menuItem['children'][0].routeName) && !isset($menuItem['children'][0].actionName)}
-											<li><a href="{routeFull route=$menuItem['children'][0].routeName controller=$menuItem['children'][0].controllerName}">{$menuItem.title}</a></li>
-										{/if}
-									{/if}
-								{else} <!-- no children -->
-									{if isset($menuItem.routeName) && isset($menuItem.actionName)} <!-- Dipose de route -->
-										<li><a href="{routeFull route=$menuItem.routeName controller=$menuItem.controllerName action=$menuItem.actionName}">{$menuItem.title}</a></li>
-									{else if isset($menuItem.routeName) && !isset($menuItem.actionName)}
-										<li><a href="{routeFull route=$menuItem.routeName controller=$menuItem.controllerName}">{$menuItem.title}</a></li>
-									{/if}
-								{/if}
-							{/foreach}
-						</ul>
-					</div>
-				</div>
-			</div>
-			
-			{if isset($activeMenu) && isset($adminMenu[$activeMenu]['children']) && ($adminMenu[$activeMenu]['children']|@count) > 1}
-			<div id="nav_rubrique">
-				<div class="container">				
-					<ul class="nav nav-pills">
-						{foreach from=$adminMenu[$activeMenu]['children'] item=subMenu name=subMenu2}
-							{if isset($subMenu.routeName)}
-								<li {if $subMenu.title == $titleSubMenu}class="active"{/if}>
-									{if isset($subMenu.actionName)}
-										<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName action=$subMenu.actionName}">
-									{else}
-										<a href="{routeFull route=$subMenu.routeName controller=$subMenu.controllerName}">
-									{/if}
-									{$subMenu.title}
-									</a>
-								</li>
-							{/if}
-						{/foreach}
-					</ul>
-				</div>
-
-			</div>					
-			{/if}
-			
-
-			<div id="content_body" class="blanc_ombre">
-				{dynamic}{messages}{/dynamic}
-				
-				{$layout->content}
-			</div>
-
-			
-			<div id="footer">
-				<span class="pull-left">
-				{if $smarty.const.ADMIN_SKIN == "selectup"}
-					Select'Up
-				{else}
-					Flamant Bleu
-				{/if}
-				</span>
-				<span class="pull-right">
-				{if $smarty.const.ADMIN_SKIN == "selectup"}
-					CMS AUTO {'Y'|date}
-				{else}
-					CMS Aïdoo {'Y'|date}
-				{/if}
-				({$smarty.const.CMS_VERSION})
-				</span>
-			</div>
-		</div>
+<div class="container">
+	
+	<div id="content">
+		{dynamic}{messages}{/dynamic}
+		
+		{$layout->content}
 	</div>
+	
+	<div id="footer">
+		<span class="pull-left">
+		{if $smarty.const.ADMIN_SKIN == "selectup"}
+			Select'Up
+		{else}
+			Flamant Bleu
+		{/if}
+		</span>
+		<span class="pull-right">
+		{if $smarty.const.ADMIN_SKIN == "selectup"}
+			CMS AUTO {'Y'|date}
+		{else}
+			CMS Aïdoo {'Y'|date}
+		{/if}
+		({$smarty.const.CMS_VERSION})
+		</span>
+	</div>
+</div>
+
 </body>
 </html>
