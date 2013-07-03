@@ -105,36 +105,44 @@ a.orange {
 
 /* ---------- Page Login ---------- */
 
-#login_bandeau{
-text-align:center;
-background: url("../images/login_header.jpg") repeat-x;
-	height: 121px;
-	margin-top: 9px;
+#login_page {
+	margin-top: 50px;
+}
+#login_page h2 {
+	margin-bottom: 20px;
 }
 
-#login_bandeau h1{
-	display: inline;
-	color: #fff;
+#login_page .form-signin{
+width: 300px;
+padding: 20px 30px 30px;
+margin: 0 auto 20px;
+background-color: #fff;
+border: 1px solid #e5e5e5;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 
-#login_bandeau img{
-	margin-right: 30px;
-	margin-top: 10px;	
+#login_page .form_text {
+display:none;
 }
 
-#login_content{
-	margin-top: 67px;
-	width:450px;
-	margin:67px auto auto auto;
+#login_page .form_elem,
+#login_page .form_error,
+#login_page .form_error ul {
+margin: 0;
 }
-
-#login_body h2{
-	text-align:center;
-	font-size: 1.6em;
-	margin-bottom: 15px;
-	text-shadow: 4px 4px 3px #aaa;
+#login_page .form_error ul {
+list-style: none;
+color: red;
 }
-
+#login_page input {
+width: 285px;
+}
+      
 /* ---------- Content ---------- */
 
 /*articles*/
