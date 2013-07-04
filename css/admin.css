@@ -173,13 +173,6 @@ text-align:left;
 	cursor: pointer;
 }
 
-.item_icone {
-margin-left: 7px; 
-float: left; 
-width: 32px; 
-height: 32px;
-}
-
 .item_subtitle {
 color: #FFFFFF; 
 margin-left: 50px;
@@ -189,14 +182,6 @@ margin-left: 50px;
 color: #000000; 
 margin-left: 50px;
 }
-
-#manage_page {background: url(../images/icone_manager.png) no-repeat;}
-#users {background: url(../images/icone_user.png) no-repeat;}
-#docs {background: url(../images/icone_doc.png) no-repeat;}
-#pubs {background: url(../images/icone_advertising.png) no-repeat;}
-#bloc {background: url(../images/icone_bloc.png) no-repeat;}
-#skin {background: url(../images/icone_skin.png) no-repeat;}
-#diapos {background: url(../images/icone_diapo.png) no-repeat;}
 
 .liens_dashboard {
 margin-top: 10px;	
