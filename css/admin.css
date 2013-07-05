@@ -2,7 +2,7 @@
 /* ---------- COMMON ---------- */
 
 body {
-	background-color: #fafafa;	
+	background-color: whitesmoke;	
 }
 
 a:active {outline: none;}
@@ -23,8 +23,20 @@ height: 120px;
 
 /* LAYOUT */
 
-#content {
+#layout_content {
 	margin-top: 60px;
+}
+
+#layout_content ul.nav-tabs {
+	margin-bottom: 0px;
+	border-bottom: none;
+}
+
+#content {
+	padding: 20px;
+	margin-top: 0px;
+	background-color: #FFF;
+	border: 1px solid #e6e7eb;
 }
 
 /* ---------- ZONES & TITRES ---------- */
@@ -181,14 +193,6 @@ margin-left: 50px;
 color: #000000; 
 margin-left: 50px;
 }
-
-#manage_page {background: url(../images/icone_manager.png) no-repeat;}
-#users {background: url(../images/icone_user.png) no-repeat;}
-#docs {background: url(../images/icone_doc.png) no-repeat;}
-#pubs {background: url(../images/icone_advertising.png) no-repeat;}
-#bloc {background: url(../images/icone_bloc.png) no-repeat;}
-#skin {background: url(../images/icone_skin.png) no-repeat;}
-#diapos {background: url(../images/icone_diapo.png) no-repeat;}
 
 .liens_dashboard {
 margin-top: 10px;	

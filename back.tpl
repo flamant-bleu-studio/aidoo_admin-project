@@ -91,14 +91,6 @@
 		<script> 
 			$(document).ready(function(){
 
-				$('body').raptorize({
-			        'enterOn' : 'konami-code', //timer, konami-code, click
-			        'delayTime' : 5000 //time before raptor attacks on timer mode
-			   });
-				
-				// Menu principal admin
-				$('.dropdown-toggle').dropdown();
-
 				// Tooltip sur les liens
 				$('.show_tooltip a, .show_tooltip').tooltip();
 
@@ -239,7 +231,7 @@
 
 <div class="container">
 	
-	<div id="content">
+	<div id="layout_content">
 		{dynamic}{messages}{/dynamic}
 		
 		{$layout->content}
