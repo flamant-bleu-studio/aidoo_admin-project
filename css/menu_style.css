@@ -1,0 +1,124 @@
+.dndList {
+margin: 0;	
+}
+
+.menu_list {
+	margin: 20px 0;	
+}
+
+.dndList ul {
+	margin: 0;
+	margin-left: 10px;
+	border-left: 1px solid #C6C7CA; 
+}
+
+.dndList li {
+	display: block; 
+	clear: both;
+	margin-left: 15px;
+}
+
+.dndList dd {
+	height: 35px;
+	line-height: 35px;
+}
+
+.dndList dl {
+	margin: 0;
+	height: 35px;
+	line-height: 35px;
+	border-top: 1px solid #D3E5ED; 
+	border-bottom: 1px solid #D3E5ED; 
+}
+
+.dndList dt.grip, .dndList dd, .dndList .dnd_expander {
+	float: left;
+}
+
+.dnd_expander {
+display: block; 
+width: 29px;
+height: 35px;
+background: url("middle.png") center top no-repeat;
+margin-right: 2px;
+}
+
+.dndList dt.actions {
+	height: 35px;
+	line-height: 35px;
+	margin-right: 10px;
+}
+.dndList dt.actions a {
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+}
+
+.dndList dt.grip {
+	height: 35px;
+}
+.dndList dd.title {
+	margin-left: 15px;
+	
+}
+.dndList img.dnd_move {
+	cursor: move;
+}
+.dndList div.dropzone { 
+	height:5px; 
+}
+
+.dndList li.dnd_listOpen > dl > .dnd_expander {
+	display: block; 
+	width: 29px; 
+	height: 35px; 
+	background: url("../js/dndList/moins.png") center top no-repeat;
+	margin-right: 2px;
+}
+.dndList li.dnd_listClosed > dl > .dnd_expander {
+	display: block; 
+	width: 29px; 
+	height: 35px; 
+	background: url("../js/dndList/plus.png") center top no-repeat;
+	margin-right: 2px;
+}
+.dndList li.dnd_listClosed ul {
+	display: none;
+}
+
+
+
+.headMenu .icon-reorder {
+	font-size: 25px;
+	line-height: 10px;
+	margin-right: 5px;
+}
+.headMenu .title {
+	font-weight: bold;
+	font-size: 18px;
+}
+.headMenu .subtitle {
+	display: block;
+	font-style: italic;
+	margin-top: 3px;
+	margin-left: 31px;
+}
+
+.menu_list li .grip img {
+	vertical-align: bottom;
+}
+
+.menu_list li .icon-folder-open.dnd_move,
+.menu_list li .icon-file.dnd_move {
+	font-size: 30px;
+	line-height: 35px;
+	color: #5bb75b;
+}
+
+.menu_list li .icon-folder-open.dnd_move.disabled,
+.menu_list li .icon-file.dnd_move.disabled {
+	color: #faa732;
+}
+
+.menu_list .dndList {
+	margin-top: 15px;
+}

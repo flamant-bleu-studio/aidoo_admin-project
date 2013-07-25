@@ -11,19 +11,19 @@
 		
 		params = $.extend(defaults, params); 
 		
-	    $('.closeallmenu').bind('click', $.bind(this, function(){
+	    $('.closeallmenu').on('click', function(e){
+	    	e.preventDefault();
 			$("li").each(function() {
 				$(this).removeClass(params.openNodeClass).addClass(params.closeNodeClass);
 			});
-			return false;
-		}));
+		});
 		
-	    $('.openallmenu').bind('click', $.bind(this, function(){
-			$("li").each(function() {
+	    $('.openallmenu').on('click', function(e){
+	    	e.preventDefault();
+	    	$('li').each(function() {
 				$(this).removeClass(params.closeNodeClass).addClass(params.openNodeClass);
 			});
-			return false;
-		}));
+		});
 		
 		
 		
@@ -96,12 +96,12 @@
 	    });
 	    
 	    // Toggle
-	    $(this).find('a.'+params.expanderClass).live('click', function() {
+	    $(this).find('a.'+params.expanderClass).on('click', function() {
 			$(this).parent().parent().toggleClass(params.openNodeClass).toggleClass(params.closeNodeClass);
 			return false;
 		});
 	    
-	    $(this).find('dl').live('mouseover', function() {
+	    $(this).find('dl').on('mouseover', function() {
 	    	$(this).find('dt.actions a').css({
 	    		"opacity": 		"1",
 	    	    "filter" : 		"alpha(opacity=100)"
@@ -109,7 +109,7 @@
 	    	$(this).css({ backgroundColor: '#9acbe0' });
 		});
 	    
-	    $(this).find('dl').live('mouseout', function() {
+	    $(this).find('dl').on('mouseout', function() {
 	    	$(this).find('dt.actions a').css({
 	    		"opacity": 		"0.1",
 	    	    "filter" : 		"alpha(opacity=10)"

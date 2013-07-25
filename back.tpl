@@ -38,21 +38,10 @@
 		</script>
 		
 		<!-- JQuery Libs -->
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery-1.7.1.min.js"></script>
-		
+		<script src="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/jquery-ui-1.9.1.custom.min.js"></script>		
 		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/ui-lightness/jquery-ui-1.9.1.custom.min.css" rel="stylesheet" media="all" />
 		
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/hoverIntent.min.js"></script>
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bgiframe/jquery.bgiframe.min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.overlabel.min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.scrollTo-min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.localscroll-min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.cycle.all.min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.mousewheel-3.0.4.pack.js"></script>
-		
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/ajaxAidoo/script.js"></script>
-				
 		<!-- Bootstrap twitter -->
 		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/js/bootstrap.min.js"></script>
@@ -60,40 +49,33 @@
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="{$smarty.const.COMMON_LIB_PATH}/lib/font-awesome/v3.2.1/css/font-awesome.min.css">
 		
-		<!--  Alerts  -->
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/sexyalert/sexyalertbox.v1.2.jquery.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/sexyalert/sexyalert.js"></script>
-		<link href="{$baseUrl}{$skinUrl}/js/sexyalert/sexyalertbox.css" media="screen" rel="stylesheet" type="text/css" />
+		<!-- Fancybox -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/fancybox/2.1.4/jquery.fancybox.pack.js"></script>
+		<link rel="stylesheet" href="{$smarty.const.COMMON_LIB_PATH}/lib/fancybox/2.1.4/jquery.fancybox.css">
 		
 		<!--  Drag & drop list  -->
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/dndList/dndList.js"></script>
 		
-		<!-- fancy box -->
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-		<link href="{$baseUrl}{$skinUrl}/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" rel="stylesheet" media="screen">
-		
-		<link href="{$baseUrl}{$skinUrl}/css/admin.css" media="screen" rel="stylesheet" type="text/css" />
-		
-		<!-- fragment HTML -->
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/jqueryBBQ/script.js"></script>
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/fragmentHTML/script.js"></script>
-		
-		{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/jquery.dataTables.min.js"}
-		{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/dataTables.plugins.js"}
-		
-		{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/script.js"}
-		{appendFile type="css" src="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/styles.css"}
-		
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/raptorize/jquery.raptorize.1.0.js"></script>
-		
+		<!-- dataTables -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/dataTables.plugins.js"></script>
 		<script type="text/javascript"> var datatable_lang_file =  "{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/lang/fr.lang"; </script>	
+		
+		<!-- LangSwitcher -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/script.js"></script>
+		<link href="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/styles.css" media="screen" rel="stylesheet" type="text/css" />
+		
+		<!-- Scripts -->
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/menu/script.js"></script>
+		
+		<!-- Styles -->
+		<link href="{$baseUrl}{$skinUrl}/css/admin.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{$baseUrl}{$skinUrl}/css/menu_style.css" media="screen" rel="stylesheet" type="text/css" />
+		
 		{literal}
 		<script> 
 			$(document).ready(function(){
-
-				// Tooltip sur les liens
-				$('.show_tooltip a, .show_tooltip').tooltip();
-
 				if(jQuery.isFunction( jQuery.dataTable )){
 					$.extend( $.fn.dataTableExt.oStdClasses, {
 						"sSortAsc": "header headerSortDown",
