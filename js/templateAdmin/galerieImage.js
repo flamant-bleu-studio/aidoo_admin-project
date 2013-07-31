@@ -30,7 +30,7 @@ $(document).ready(function(){
 	 * Dates des diapos
 	 * ========
 	 */
-	$("#isPermanent").live("click", function(){
+	$("#isPermanent").on("click", function(){
 		showDate(!$(this).is(":checked"));
 	});
 	
@@ -46,7 +46,7 @@ $(document).ready(function(){
 	 * Liens sur les diapos
 	 * ========
 	 */
-	$("#addLink").live("click", function(){
+	$("#addLink").on("click", function(){
 		showLink($(this).attr("checked"));
 	});
 	
@@ -60,11 +60,11 @@ $(document).ready(function(){
 	$("#link_type-0").attr('checked', true);
 	showLinkType(0);
 	
-	$("#link_type-0").live("click", function(){
+	$("#link_type-0").on("click", function(){
 		showLinkType(0);
 	});
 	
-	$("#link_type-1").live("click", function(){
+	$("#link_type-1").on("click", function(){
 		showLinkType(1);
 	});
 
@@ -86,7 +86,7 @@ $(document).ready(function(){
 	 * Suppression d'une image
 	 * ========
 	 */
-	$("a.image_delete").live("click", function(e) {
+	$("a.image_delete").on("click", function(e) {
 		e.preventDefault();
 		
 		var selector_img = $(this).siblings("img.galerie_image"); // Selection de l'image que lon souhaite supprimer
@@ -125,7 +125,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#image_add, #image_manage .galerie_image").live("click", function(e){
+	$("#image_add, #image_manage .galerie_image").on("click", function(e){
 		
 		if ( $(this).attr("rel") ) // Vrai si edition d'une image
 			temp_id = $(this).attr("rel"); // Récupération de l'id à éditer
@@ -230,7 +230,7 @@ $(document).ready(function(){
 		return $("#form_galerie [name=datas\\["+id+"\\]\\["+name+"\\]]").val();
 	}
 	
-	$("#valid_image").live("click", function(e){
+	$("#valid_image").on("click", function(e){
 		e.preventDefault();
 		
 		if ( $("#formImage").validationEngine('validate') )
@@ -258,7 +258,11 @@ $(document).ready(function(){
 				fillInput(id, "path_thumb2", 	temp["path_thumb2"]);
 			}
 			
-			fillInput(id, "description", 	tinyMCE.activeEditor.getContent());
+			if (tinyMCE.activeEditor != null)
+				fillInput(id, "description", 	tinyMCE.activeEditor.getContent());
+			else
+				fillInput(id, "description", $("#bg_color_image").val());
+			
 			fillInput(id, "bg_color_image", $("#bg_color_image").val());
 			fillInput(id, "isPermanent", 	($("#isPermanent").attr("checked")) ? "true" : "false");
 			fillInput(id, "addLink", 		($("#addLink").attr("checked") != null) ? "true" : "false");
@@ -296,7 +300,7 @@ $(document).ready(function(){
 	 * Bouton cancel fancybox 
 	 * ========
 	 */
-	$("#cancel_image").live("click", function(){
+	$("#cancel_image").on("click", function(){
 		$.fancybox.close();
 		return false;
 	});
