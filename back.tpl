@@ -68,9 +68,11 @@
 		<!-- Scripts -->
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/script.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/menu/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/seo/script.js"></script>
 		
 		<!-- Styles -->
 		<link href="{$baseUrl}{$skinUrl}/css/admin.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{$baseUrl}{$skinUrl}/css/btn.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/menu_style.css" media="screen" rel="stylesheet" type="text/css" />
 		
 		{literal}
