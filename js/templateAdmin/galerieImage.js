@@ -47,7 +47,7 @@ $(document).ready(function(){
 	 * ========
 	 */
 	$("#addLink").on("click", function(){
-		showLink($(this).attr("checked"));
+		showLink($(this).is(':checked'));
 	});
 	
 	function showLink(val){
@@ -197,14 +197,14 @@ $(document).ready(function(){
 			'autoScale'		: true,
 			'autoDimensions': true,
 			'titleShow'		: false,
-			onComplete	: function(){				
-				tinyMCE.execCommand('mceAddControl', false, 'description');				
+			afterShow	: function(){				
+				tinyMCE.execCommand('mceAddControl', false, 'description');
 			},
-			onCleanup: function(){
+			beforeClose: function(){
 				$('#formImage').validationEngine('hideAll');
 				temp_id = null; // ID d'édition remis à null
 				
-				tinyMCE.execCommand('mceFocus', false, 'description'); 
+				//tinyMCE.execCommand('mceFocus', false, 'description'); 
 				tinyMCE.execCommand('mceRemoveControl', false, "description"); // Ferme le TinyMCE (pour la comptabilité avec fancybox) 
 
 				$("#valid_image").unbind();
