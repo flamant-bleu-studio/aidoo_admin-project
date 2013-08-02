@@ -360,7 +360,7 @@
         	oSelectTplToDuplicate.append(newOption);
         	oSelectTpl.append(newOption);
         	
-			if($("#duplicate").attr("checked")){
+			if($("#duplicate").is(":checked")){
 				plugin.settings.tplDatas[resultAjax["id"]] = plugin.settings.tplDatas[oSelectTplToDuplicate.val()];
 			}
 			else {
