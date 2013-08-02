@@ -284,11 +284,12 @@
     			{			
     				$.ajax({
     					type: "POST",
+    					cache: false,
     					url: baseUrl+'/ajax/blocs/newtemplate',
     					dataType: "json",
     					data: {
     						'title' : $("#title_template").val(),
-    						'duplicate': $("#duplicate").attr("checked"),
+    						'duplicate': $("#duplicate").is(":checked")?"checked":0,
     						'template_id_duplicate': oSelectTplToDuplicate.val()
     					},
     					error: function(results){
