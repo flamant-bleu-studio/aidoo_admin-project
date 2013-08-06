@@ -12,6 +12,92 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	$('.confirmDeleteMenuFolder').on('click', function(e){
+		e.preventDefault();
+		
+		var href = $(this).attr('href');
+		
+		bootbox.dialog(I18n.t("confirm_delete_folder"), [{
+		    "label" : I18n.t("confirm_delete_folder_label_button_folder_only"),
+		    "class" : "btn-danger",
+		    "callback": function() {
+		    	window.location.href = href;
+		    }
+		},{
+		    "label" : I18n.t("confirm_delete_folder_label_button_folder_and_items"),
+		    "class" : "btn-danger",
+		    "callback": function() {
+		    	window.location.href = href+'/deletechildren';
+		    }
+		},{
+		    "label" : I18n.t("confirm_delete_folder_label_button_folder_and_items_and_contents"),
+		    "class" : "btn-danger",
+		    "callback": function() {
+		    	window.location.href = href+'/deletechildrenandcontent';
+		    }
+		}, {
+		    "label" : I18n.t("cancel"),
+		    "class" : "btn-default"
+		},]);
+	});
+	
+	$('.confirmDeleteMenuItemWhitContent').on('click', function(e){
+		e.preventDefault();
+				
+		var href = $(this).attr('href');
+		
+		bootbox.dialog(I18n.t("confirm_delete_item"), [{
+		    "label" : I18n.t("confirm_delete_item_label_button_item_only"),
+		    "class" : "btn-danger",
+		    "callback": function() {
+		    	window.location.href = href;
+		    }
+		},{
+		    "label" : I18n.t("confirm_delete_item_label_button_item_only_and_content"),
+		    "class" : "btn-danger",
+		    "callback": function() {
+		    	window.location.href = href+'/deletecontent';
+		    }
+		}, {
+		    "label" : I18n.t("cancel"),
+		    "class" : "btn-default"
+		},]);
+	});
+	
+	$('.confirmDeleteMenuItem').on('click', function(e){
+		e.preventDefault();
+		
+		var href = $(this).attr('href');
+		
+		bootbox.dialog(I18n.t("confirm_delete_item"), [{
+		    "label" : I18n.t("delete"),
+		    "class" : "btn-danger",
+		    "callback": function() {
+		    	window.location.href = href;
+		    }
+		}, {
+		    "label" : I18n.t("cancel"),
+		    "class" : "btn-default"
+		},]);
+	});
+	
+	$('.confirmDeleteMenu').on('click', function(e){
+		e.preventDefault();
+		
+		var href = $(this).attr('href');
+		
+		bootbox.dialog(I18n.t("confirm_delete_menu"), [{
+		    "label" : I18n.t("delete"),
+		    "class" : "btn-danger",
+		    "callback": function() {
+		    	window.location.href = href;
+		    }
+		}, {
+		    "label" : I18n.t("cancel"),
+		    "class" : "btn-default"
+		},]);
+	});
 });
 
 function update_parent_menu_node(src, dst) {
