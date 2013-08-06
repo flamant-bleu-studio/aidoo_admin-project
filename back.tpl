@@ -75,8 +75,26 @@
 		<link href="{$baseUrl}{$skinUrl}/css/btn.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/menu_style.css" media="screen" rel="stylesheet" type="text/css" />
 		
+		<!-- Translations JS -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/i18n-js/12-07-2013/i18n.js"></script>
+		
+		<script type="text/javascript">
+			I18n.defaultLocale = "en";
+			I18n.locale = "{$smarty.const.DEFAULT_LANG_CODE}";
+			I18n.translations = {};
+		</script>
+		
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/en.js"></script>
+		{if $smarty.const.DEFAULT_LANG_CODE != "en"}
+			<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/{$smarty.const.DEFAULT_LANG_CODE}.js"></script>
+		{/if}
+		
+		<!-- Custom alert -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootbox/v3.3.0/bootbox.min.js"></script>
+		<link href="{$baseUrl}{$skinUrl}/css/bootbox.css" media="screen" rel="stylesheet" type="text/css" />
+		
 		{literal}
-		<script> 
+		<script>
 			$(document).ready(function(){
 				if(jQuery.isFunction( jQuery.dataTable )){
 					$.extend( $.fn.dataTableExt.oStdClasses, {
