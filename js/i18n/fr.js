@@ -4,6 +4,7 @@ I18n.translations["fr"] = {
 	no: 'Non',
 	cancel: 'Annuler',
 	delete: 'Supprimer',
+	error: 'Erreur',
 	
 	/** Menu **/
 	confirm_delete_folder: 'Etes-vous sûr de vouloir supprimer ce dossier ?',
@@ -21,4 +22,13 @@ I18n.translations["fr"] = {
 	/** Articles / Catégories **/
 	confirm_delete_category: 'Etes-vous sûr de vouloir supprimer cette catégorie ?',
 	confirm_delete_article: 'Etes-vous sûr de vouloir supprimer cet article ?',
+	
+	/** File Upload **/
+	fileupload_start_upload: 'Commencer l\'envoi',
+	fileupload_file_too_big: 'La taille du fichier est trop grosse',
+	fileupload_file_too_small: 'La taille du fichier est trop petite',
+	fileupload_file_not_allowed: 'Ce type de fichier n\'est pas accepté',
+	fileupload_file_number_exceeded: 'Le nombre maximum de fichier est atteint',
+	fileupload_file_size_exceed: 'Uploaded bytes exceed file size',
+	fileupload_empty_file: 'Empty file upload result',
 };
