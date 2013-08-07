@@ -16,4 +16,32 @@ $(document).ready(function(){
 	// Tooltip
 	
 	$('.showTooltip').tooltip();
+	
+	// DataTable
+	
+	$.extend( $.fn.dataTableExt.oStdClasses, {
+		"sSortAsc": "header headerSortDown",
+		"sSortDesc": "header headerSortUp",
+		"sSortable": "header"
+	});
+	
+	if($('#datatable, table.datatable').length){
+		$('#datatable, table.datatable').dataTable({
+			"oLanguage": {
+				"sUrl": datatable_lang_file
+			},
+			"sPaginationType": "full_numbers",
+			"aoColumnDefs": [
+				{"bSortable": false, "aTargets": ["no_sorting"]},
+				{ "sType": "title-string", "aTargets": ["sortByTitle"] },
+				{ "sType": "data-sort", "aTargets": ["sortByDataSort"] }
+			]
+		});
+	}
 });
+
+//Translations
+
+I18n.defaultLocale = defaultLangCode;
+I18n.locale = currentLangCode;
+I18n.translations = {};
