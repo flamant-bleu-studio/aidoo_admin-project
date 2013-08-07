@@ -24,47 +24,75 @@
 		<script type="text/javascript">
 			var baseUrl = "{$baseUrl}";
 			var skinUrl = "{$skinUrl}";
+			var commonLibUrl = "{$smarty.const.COMMON_LIB_PATH}";
 			
 			var defaultLangId 	= {$smarty.const.DEFAULT_LANG_ID};
 			var defaultLangCode = "{$smarty.const.DEFAULT_LANG_CODE}";
-			{if isset($ajax_apiKey)}var ajax_apiKey 	= "{$ajax_apiKey}";{/if}
-			var commonLibUrl = "{$smarty.const.COMMON_LIB_PATH}";
+			
+			{if isset($ajax_apiKey)}
+				var ajax_apiKey = "{$ajax_apiKey}";
+			{/if}
 		</script>
-
+		
 		<!-- JQuery Libs -->
-		
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery-1.7.1.min.js"></script>
-		
+		<script src="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/jquery-ui-1.9.1.custom.min.js"></script>		
 		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/ui-lightness/jquery-ui-1.9.1.custom.min.css" rel="stylesheet" media="all" />
 		
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/hoverIntent.min.js"></script>
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bgiframe/jquery.bgiframe.min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.overlabel.min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.scrollTo-min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.localscroll-min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.cycle.all.min.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/jquery/jquery.mousewheel-3.0.4.pack.js"></script>
-		
 		<!-- Bootstrap twitter -->
-		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.2.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
-		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.2.2/js/bootstrap.min.js"></script>
+		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/js/bootstrap.min.js"></script>
 		
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="{$smarty.const.COMMON_LIB_PATH}/lib/font-awesome/v3.2.1/css/font-awesome.min.css">
+		
+		<!-- Fancybox -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/fancybox/2.1.4/jquery.fancybox.pack.js"></script>
+		<link rel="stylesheet" href="{$smarty.const.COMMON_LIB_PATH}/lib/fancybox/2.1.4/jquery.fancybox.css">
+		
+		<!--  Drag & drop list  -->
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/dndList/dndList.js"></script>
+		
+		<!-- dataTables -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/dataTables.plugins.js"></script>
+		<script type="text/javascript"> var datatable_lang_file =  "{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/lang/fr.lang"; </script>	
+		
+		<!-- LangSwitcher -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/script.js"></script>
+		<link href="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/styles.css" media="screen" rel="stylesheet" type="text/css" />
+		
+		<!-- Scripts -->
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/menu/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/seo/script.js"></script>
+		
+		<!-- Styles -->
 		<link href="{$baseUrl}{$skinUrl}/css/admin.css" media="screen" rel="stylesheet" type="text/css" />
-
-	 
-	 	{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/jquery.dataTables.min.js"}
-		{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/js/dataTables.plugins.js"}
-		{appendFile type="css" src="{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/css/demo_table_jui.css"}
+		<link href="{$baseUrl}{$skinUrl}/css/btn.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{$baseUrl}{$skinUrl}/css/menu_style.css" media="screen" rel="stylesheet" type="text/css" />
 		
-		{appendFile type="js" src="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/script.js"}
-		{appendFile type="css" src="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/styles.css"}
-
-		<script> var datatable_lang_file =  "{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/lang/fr.lang"; </script>	
-			
+		<!-- Translations JS -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/i18n-js/12-07-2013/i18n.js"></script>
+		
+		<script type="text/javascript">
+			I18n.defaultLocale = "en";
+			I18n.locale = "{$smarty.const.DEFAULT_LANG_CODE}";
+			I18n.translations = {};
+		</script>
+		
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/en.js"></script>
+		{if $smarty.const.DEFAULT_LANG_CODE != "en"}
+			<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/{$smarty.const.DEFAULT_LANG_CODE}.js"></script>
+		{/if}
+		
+		<!-- Custom alert -->
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootbox/v3.3.0/bootbox.min.js"></script>
+		<link href="{$baseUrl}{$skinUrl}/css/bootbox.css" media="screen" rel="stylesheet" type="text/css" />
+		
 		{AppendJsFiles}
 		{AppendJsScripts}
-	
+		
 		{AppendCssFiles}
 		{AppendCssScripts}
 		
