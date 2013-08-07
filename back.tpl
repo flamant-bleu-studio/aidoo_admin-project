@@ -69,6 +69,8 @@
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/script.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/menu/script.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/seo/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/documents/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/articles/script.js"></script>
 		
 		<!-- Styles -->
 		<link href="{$baseUrl}{$skinUrl}/css/admin.css" media="screen" rel="stylesheet" type="text/css" />
