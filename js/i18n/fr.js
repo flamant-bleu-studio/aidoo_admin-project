@@ -13,5 +13,12 @@ I18n.translations["fr"] = {
 	confirm_delete_item: 'Etes-vous sûr de vouloir supprimer cet item ?',
 	confirm_delete_item_label_button_item_only: 'Seulement l\'item',
 	confirm_delete_item_label_button_item_only_and_content: 'L\'item et son contenu',
-	confirm_delete_menu: 'Etes-vous sûr de vouloir supprimer ce menu ?'
+	confirm_delete_menu: 'Etes-vous sûr de vouloir supprimer ce menu ?',
+	
+	/** Documents **/
+	confirm_delete_document: 'Etes-vous sûr de vouloir supprimer ce document ?',
+	
+	/** Articles / Catégories **/
+	confirm_delete_category: 'Etes-vous sûr de vouloir supprimer cette catégorie ?',
+	confirm_delete_article: 'Etes-vous sûr de vouloir supprimer cet article ?',
 };
