@@ -6,3 +6,8 @@
 #dashboard .span4:last-child {
 	border: none;
 }
+
+.breadcrumb {
+	background-color: #FFF;
+	border: 1px solid #e6e7eb;
+}
