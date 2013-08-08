@@ -28,6 +28,7 @@
 			
 			var defaultLangId 	= {$smarty.const.DEFAULT_LANG_ID};
 			var defaultLangCode = "{$smarty.const.DEFAULT_LANG_CODE}";
+			var currentLangCode = "{$smarty.const.CURRENT_LANG_CODE}";
 			
 			{if isset($ajax_apiKey)}
 				var ajax_apiKey = "{$ajax_apiKey}";
@@ -38,6 +39,11 @@
 		<script src="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/jquery-ui-1.9.1.custom.min.js"></script>		
 		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/ui-lightness/jquery-ui-1.9.1.custom.min.css" rel="stylesheet" media="all" />
+		
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/languages/jquery.validationEngine-fr.js"></script>
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/jquery.validationEngine.js"></script>
+		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/contrib/other-validations.js"></script>
+		<link href="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/css/validationEngine.jquery.css" media="screen" rel="stylesheet" type="text/css" />
 		
 		<!-- Bootstrap twitter -->
 		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
@@ -62,11 +68,6 @@
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/script.js"></script>
 		<link href="{$smarty.const.COMMON_LIB_PATH}/lib/langSwitcher/styles.css" media="screen" rel="stylesheet" type="text/css" />
 		
-		<!-- Scripts -->
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/script.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/menu/script.js"></script>
-		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/seo/script.js"></script>
-		
 		<!-- Styles -->
 		<link href="{$baseUrl}{$skinUrl}/css/admin.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/btn.css" media="screen" rel="stylesheet" type="text/css" />
@@ -74,13 +75,7 @@
 		
 		<!-- Translations JS -->
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/i18n-js/12-07-2013/i18n.js"></script>
-		
-		<script type="text/javascript">
-			I18n.defaultLocale = "en";
-			I18n.locale = "{$smarty.const.DEFAULT_LANG_CODE}";
-			I18n.translations = {};
-		</script>
-		
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/script.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/en.js"></script>
 		{if $smarty.const.DEFAULT_LANG_CODE != "en"}
 			<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/{$smarty.const.DEFAULT_LANG_CODE}.js"></script>
@@ -89,6 +84,11 @@
 		<!-- Custom alert -->
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootbox/v3.3.0/bootbox.min.js"></script>
 		<link href="{$baseUrl}{$skinUrl}/css/bootbox.css" media="screen" rel="stylesheet" type="text/css" />
+		
+		<!-- Scripts -->
+		
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/menu/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/seo/script.js"></script>
 		
 		{AppendJsFiles}
 		{AppendJsScripts}
