@@ -55,7 +55,7 @@ $(document).ready(function(){
 	 * 2 : external link
 	 */
 	function changeLinkType(type){
-		console.log(type);
+		
 		type = parseInt(type);
 		
 		if (type == 0) {
