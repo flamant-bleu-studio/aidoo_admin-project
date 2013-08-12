@@ -430,7 +430,7 @@ margin-left:20px;
 
 /* --------- Page diapos -------- */
 
-.image, .galerie, .pub {
+.galerie, .pub {
 	background: #FFFFFF;
 	border: solid 1px #969696;
 	height: 80px;
@@ -441,14 +441,14 @@ margin-left:20px;
 	margin-left: 41px;
 	margin-right: 41px;
 }
-.image:focus, .galerie:focus, .image_active, .pub_active, .galerie_active {
+.galerie:focus, .pub_active, .galerie_active {
 	border-color: #ff9300;
 	box-shadow: 0 0 5px #FF9300;
 	-moz-box-shadow: 0 0 5px #FF9300;
 	-webkit-box-shadow: 0 0 5px #FF9300;
 }
-.image:hover, .galerie:hover, .pub:hover {cursor: move; border: solid 1px #ff9300;}
-.image:hover a.image_delete, .galerie:hover a.galerie_delete, .pub:hover a.pub_delete {
+.galerie:hover, .pub:hover {cursor: move; border: solid 1px #ff9300;}
+.galerie:hover a.galerie_delete, .pub:hover a.pub_delete {
 	background: url(../images/diapo_delete.jpg) no-repeat top left;
 	height: 18px;
 	width: 18px;
@@ -467,7 +467,7 @@ margin-left:20px;
 	margin-left: 41px;
 	margin-right: 41px;
 }
-.image_add, .galerie_add, .pub_add {
+.galerie_add, .pub_add {
 	background: url(../images/diapo_add.jpg) no-repeat center;
 	border: dashed 1px #969696;
 	height: 80px;
@@ -478,14 +478,13 @@ margin-left:20px;
 	margin-left: 41px;
 	margin-right: 41px;
 }
-.image_add:hover, .galerie_add:hover, .pub_add:hover {border: dashed 1px #ff9300; cursor: pointer;}
-.image_img, .galerie_img, .pub_img {
+.galerie_add:hover, .pub_add:hover {border: dashed 1px #ff9300; cursor: pointer;}
+.galerie_img, .pub_img {
 	text-align: center;
 	width: 86px;
 	height: 68px;
 }
-#form_image, #form_pub {margin-top: 20px;}
-#image_preview {max-width:400px;max-height:400px;}
+#form_pub {margin-top: 20px;}
 
 /*facebook*/
 

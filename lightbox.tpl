@@ -72,6 +72,7 @@
 		<link href="{$baseUrl}{$skinUrl}/css/admin.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/btn.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/menu_style.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{$baseUrl}{$skinUrl}/css/diaporama.css" media="screen" rel="stylesheet" type="text/css" />
 		
 		<!-- Translations JS -->
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/i18n-js/12-07-2013/i18n.js"></script>
@@ -86,9 +87,9 @@
 		<link href="{$baseUrl}{$skinUrl}/css/bootbox.css" media="screen" rel="stylesheet" type="text/css" />
 		
 		<!-- Scripts -->
-		
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/menu/script.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/seo/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/diaporama/script.js"></script>
 		
 		{AppendJsFiles}
 		{AppendJsScripts}

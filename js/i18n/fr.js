@@ -31,4 +31,7 @@ I18n.translations["fr"] = {
 	fileupload_file_number_exceeded: 'Le nombre maximum de fichier est atteint',
 	fileupload_file_size_exceed: 'Uploaded bytes exceed file size',
 	fileupload_empty_file: 'Empty file upload result',
+	
+	/** Diaporama **/
+	confirm_delete_diaporama: 'Etes-vous sûr de vouloir supprimer ce diaporama ?',
 };

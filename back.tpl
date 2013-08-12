@@ -54,6 +54,7 @@
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/seo/script.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/documents/script.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/articles/script.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/diaporama/script.js"></script>
 		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/en.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/languages/jquery.validationEngine-fr.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/jquery.validationEngine.js"></script>
@@ -78,6 +79,7 @@
 		<link href="{$baseUrl}{$skinUrl}/css/menu_style.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/bootbox.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/blocs.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="{$baseUrl}{$skinUrl}/css/diaporama.css" media="screen" rel="stylesheet" type="text/css" />
 		{/AssetCss}
 		
 		{AppendJsFiles}
