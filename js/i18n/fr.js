@@ -34,4 +34,10 @@ I18n.translations["fr"] = {
 	
 	/** Diaporama **/
 	confirm_delete_diaporama: 'Etes-vous sûr de vouloir supprimer ce diaporama ?',
+	
+	/** Blocs **/
+	blocs_confirm_delete_template: 'Êtes-vous sûr de vouloir supprimer ce modèle ? Attention, les pages et types de pages ayant ce template sélectionné seront modifiés à "par défaut".',
+	blocs_confirm_delete_bloc: 'Êtes-vous sûr de vouloir supprimer ce bloc ? Attention, si ce bloc est utilisé par des modèles de disposition, il sera automatiquement supprimé.',
+	blocs_alert_delete_template_home: 'Il est impossible de supprimer le modèle assigné à la page d\'accueil.',
+	
 };

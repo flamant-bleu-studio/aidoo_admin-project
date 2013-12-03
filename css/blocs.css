@@ -663,3 +663,16 @@ border:1px solid #991e2e;
 #templateManager .index-29+ul{
 border:1px solid #991e2e;
 }
+
+#template.mobile .template_item.size-25 {
+	width: 21%;
+}
+#template.mobile .template_item.size-50 {
+	width: 46%;
+}
+#template.mobile .template_item.size-75 {
+	width: 73%;
+}
+#template.mobile .template_item.size-100 {
+	width: 97%;
+}

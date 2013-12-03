@@ -38,7 +38,6 @@
 			{/if}
 		</script>
 		
-		{AssetJs}
 		<script src="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/jquery-ui-1.9.1.custom.min.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/js/bootstrap.min.js"></script>
@@ -59,7 +58,6 @@
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/languages/jquery.validationEngine-fr.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/jquery.validationEngine.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/contrib/other-validations.js"></script>
-		{/AssetJs}
 		
 		{if $smarty.const.DEFAULT_LANG_CODE != "en"}
 			<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/{$smarty.const.DEFAULT_LANG_CODE}.js"></script>
@@ -67,7 +65,6 @@
 		
 		<script type="text/javascript"> var datatable_lang_file =  "{$smarty.const.COMMON_LIB_PATH}/lib/datatables/1.9.0/media/lang/fr.lang"; </script>
 		
-		{AssetCss}
 		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/jquery/ui-lightness/jquery-ui-1.9.1.custom.min.css" rel="stylesheet" media="all" />
 		<link type="text/css" href="{$smarty.const.COMMON_LIB_PATH}/lib/bootstrap/v2.3.2/css/bootstrap.min.css" rel="stylesheet" media="all" />
 		<link rel="stylesheet" href="{$smarty.const.COMMON_LIB_PATH}/lib/font-awesome/v3.2.1/css/font-awesome.min.css">
@@ -80,7 +77,6 @@
 		<link href="{$baseUrl}{$skinUrl}/css/bootbox.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/blocs.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="{$baseUrl}{$skinUrl}/css/diaporama.css" media="screen" rel="stylesheet" type="text/css" />
-		{/AssetCss}
 		
 		{AppendJsFiles}
 		{AppendJsScripts}

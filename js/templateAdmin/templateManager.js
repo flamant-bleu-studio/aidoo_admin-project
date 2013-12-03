@@ -10,7 +10,8 @@
             lastId: 1,
             defaultTpl: null,
             homePageIdTpl: 1,
-            urlDeleteTpl: ''
+            urlDeleteTpl: '',
+            templateType: 'classic'
         }
 
         var plugin = this;
@@ -49,6 +50,8 @@
             initEvents();
             
             currentTplId = oSelectTpl.val();
+            
+            switchType(plugin.settings.templateType);
         }
         
         var initDom = function() {
@@ -98,12 +101,13 @@
     				if(event.originalEvent.handleObj.namespace == "draggable"){
     					// Récupération des infos
     					var type = ui.draggable.find(".infos .type").text();
+    					var sizeBloc = ui.draggable.find(".infos .sizeBloc").text();
     					var title = ui.draggable.find(".infos .title").text();
     					var real_id = ui.draggable.find(".infos .id").text();
     					var id = "bloc-"+plugin.settings.lastId++;
     	
     					// Ajout de l'élement au placeholders
-    					$(this).find("div.drop_zone").before("<div class='template_item "+type+"' id='"+id+"' title='"+title+"' realid='"+real_id+"'>"+title+"<a href='#' class='deleteBloc'></a><a href='"+baseUrl+"/administration/blocs/edit/"+real_id+"' class='editBloc'></a></div>");
+    					$(this).find("div.drop_zone").before("<div class='template_item "+type+" size-"+sizeBloc+"' id='"+id+"' title='"+title+"' realid='"+real_id+"'>"+title+"<a href='#' class='deleteBloc'></a><a href='"+baseUrl+"/administration/blocs/edit/"+real_id+"' class='editBloc'></a></div>");
     					$(this).removeClass("drophover");
     	
     					// Le template à été modifié
@@ -197,7 +201,9 @@
     		
     		oSelectType.on("click", function(e){
     			e.preventDefault();
-
+    			
+    			window.location = $(this).data('url');
+    			return;
         		switchType($(this).val());
     		});
     		
@@ -213,18 +219,19 @@
     			
     			if(  plugin.settings.homePageIdTpl && ( plugin.settings.homePageIdTpl == currentTplId) ) {
     				// Impossible de supprimer le template de la home
-    				alert("Il est impossible de supprimer le modèle assigné à la page d'accueil.");
+					bootbox.alert(I18n.t("blocs_alert_delete_template_home"));
     			}
     			else {
-    				Sexy.confirm('Êtes-vous sûr de vouloir supprimer ce modèle ?<br/><br/><span style="color:#CE2B2A;font-style:italic;">Attention, les pages et types de pages ayant ce template sélectionné seront modifiés à "par défaut".</span>', { 
-    					onComplete: function(returnvalue) { 
-    						if(returnvalue) {
-    							window.location.href = ""+ plugin.settings.urlDeleteTpl+"/"+currentTplId+"";
-    						}
-    					},
-    					textBoxBtnOk: "Oui",
-    					textBoxBtnCancel: "Non"
-    				});
+    				bootbox.dialog(I18n.t("blocs_confirm_delete_template"), [{
+    				    "label" : I18n.t("delete"),
+    				    "class" : "btn-danger",
+    				    "callback": function() {
+    				    	window.location.href = plugin.settings.urlDeleteTpl+"/"+currentTplId;
+    				    }
+    				}, {
+    				    "label" : I18n.t("cancel"),
+    				    "class" : "btn-default"
+    				},]);
     			}
     		});
     		
@@ -335,14 +342,17 @@
     			e.preventDefault();
     			var lien = $(this).attr("href");
     			
-    			Sexy.confirm('Êtes-vous sûr de vouloir supprimer ce bloc ?<br/><br/><span style="color:#CE2B2A;font-style:italic;">Attention, si ce bloc est utilisé par des modèles de disposition, il sera automatiquement supprimé.</span>', { 
-    				onComplete: function(returnvalue) { 
-    					if(returnvalue)
-    						window.location.href = lien;
-    				},
-    				textBoxBtnOk: "Oui",
-    				textBoxBtnCancel: "Non"
-    			});
+    			bootbox.dialog(I18n.t("blocs_confirm_delete_bloc"), [{
+				    "label" : I18n.t("delete"),
+				    "class" : "btn-danger",
+				    "callback": function() {
+				    	window.location.href = lien;
+				    }
+				}, {
+				    "label" : I18n.t("cancel"),
+				    "class" : "btn-default"
+				},]);
+    			
     		});
         }
         
@@ -400,10 +410,6 @@
 			var newUrl = currentUrl.substring(0,currentUrl.lastIndexOf('/')) + "/" + oSelectTpl.val();
 			$("#configure_tpl").attr('href', newUrl);
 			
-			
-				
-			
-			
 			$("#template").fadeOut(100, function(){
 				// Suppression des blocs
 				clearPlaceholders();
@@ -418,8 +424,6 @@
 				
 				$(this).fadeIn();
 			});
-			
-			
         }
         
         var switchType = function(type){
@@ -466,15 +470,16 @@
 	    			// tous les blocs du placeholder
 	    			if(typeof data[placeholder] != 'undefined'){
 		    			$.each(data[placeholder], function(id, value) {
-		
+		    				
 		    				var blocItem = $('<div></div>').attr({
 		    					'id': id,
 		    					'title' : data[placeholder][id]['designation'],
+		    					'sizeBloc' : data[placeholder][id]['sizeBloc'],
 		    					'realid' : data[placeholder][id]['id']
 		    				}).text(
 		    						data[placeholder][id]['designation']
 		    				).addClass(
-		    					'template_item ' + data[placeholder][id]['type'] + ' index-' + plugin.settings.typeIndex[data[placeholder][id]['type']]
+		    					'template_item ' + data[placeholder][id]['type'] + ' index-' + plugin.settings.typeIndex[data[placeholder][id]['type']] + ' size-' + data[placeholder][id]['sizeBloc']
 		    				);
 		    				
 							//if( aclEditTemplate ){
@@ -568,6 +573,7 @@
 	    				toreturn[ph][increment]["id"] = $("#"+value).attr("realid");
 	    				toreturn[ph][increment]["type"] = $("#"+value).attr("class");
 	    				toreturn[ph][increment]["designation"] = $("#"+value).attr("title");
+	    				toreturn[ph][increment]["sizeBloc"] = $("#"+value).attr("sizeBloc");
 	    				
 	    				increment++;
 	    			});
@@ -630,7 +636,7 @@
 						mess.text("Vos modifications ont bien été prises en compte").css({
 							"display" : "none",
 							"position": "fixed",
-							"top": "8px",
+							"top": "50px",
 							"right": "8px",
 							"background": "rgba(0,0,0,0.7)",
 							"padding": "25px",
