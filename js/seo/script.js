@@ -13,11 +13,8 @@ $(document).ready(function(){
 		var elem = $(this),
 			id = elem.attr("data-id"),
 			tpl_id = elem.val();
-
-		var parent = elem.parent();
-		var html = parent.html();
 		
-		elem.parent().html($("<img src='"+baseUrl+"/images/loader.gif' />"));
+		elem.attr('disabled', 'disabled');
 		
 		$.ajax({
 			type: "POST",
@@ -29,17 +26,15 @@ $(document).ready(function(){
 			},
 			cache: false,
 			error: function(results){
-				parent.html(html).find("select").css({'border-color': 'red'});
 				alert("Une erreur est survenue ...\nActualisez la page et réessayez.");
 			},
 			success: function(results){
 				if(results["error"] == true) {
 					alert("Une erreur est survenue :\n" + results["message"]);
-					parent.html(html).find("select").css({'border-color': 'red'});
 				}
 				else {
-					parent.html(html).find("select").val(tpl_id);
-					parent.html(html).find("select").css({'border-color': 'green'});
+					elem.val(tpl_id);
+					elem.removeAttr('disabled');
 				}
 			}
 		});
