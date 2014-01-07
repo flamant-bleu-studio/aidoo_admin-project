@@ -8,7 +8,7 @@ function updateFromIframe(datas){
 
 $(document).ready(function(){ 
 	
-	$("#datatable .typesPages").on("change", "select", function(){
+	$("#datatable.typesPages").on("change", "select", function(){
 
 		var elem = $(this),
 			id = elem.attr("data-id"),
@@ -29,13 +29,17 @@ $(document).ready(function(){
 			},
 			cache: false,
 			error: function(results){
+				parent.html(html).find("select").css({'border-color': 'red'});
 				alert("Une erreur est survenue ...\nActualisez la page et réessayez.");
 			},
 			success: function(results){
-				if(results["error"] == true)
+				if(results["error"] == true) {
 					alert("Une erreur est survenue :\n" + results["message"]);
+					parent.html(html).find("select").css({'border-color': 'red'});
+				}
 				else {
 					parent.html(html).find("select").val(tpl_id);
+					parent.html(html).find("select").css({'border-color': 'green'});
 				}
 			}
 		});
