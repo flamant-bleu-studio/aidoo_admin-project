@@ -9,7 +9,7 @@ $(document).ready(function(){
 		'titleShow'		: false,
 		'autoScale'		: true,
 		'autoSize'		: false,
-		'type'			: 'iframe',
+		'type'			: 'ajax',
 		'openEffect'	: 'elastic',
 		'closeEffect'	: 'elastic'
 	});

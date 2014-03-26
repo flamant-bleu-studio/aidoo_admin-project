@@ -58,6 +58,7 @@
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/languages/jquery.validationEngine-fr.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/jquery.validationEngine.js"></script>
 		<script type="text/javascript" src="{$smarty.const.COMMON_LIB_PATH}/lib/formValidation/v2.6.1/js/contrib/other-validations.js"></script>
+		<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/advert/advert.js"></script>
 		
 		{if $smarty.const.DEFAULT_LANG_CODE != "en"}
 			<script type="text/javascript" src="{$baseUrl}{$skinUrl}/js/i18n/{$smarty.const.DEFAULT_LANG_CODE}.js"></script>
