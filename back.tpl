@@ -92,7 +92,7 @@
 <!-- TOP MENU -->
 
 {function name=classActiveLinkMenu item=item}
-	{if isset($adminMenu[$activeMenu]) && $adminMenu[$activeMenu]['title'] == $item.title}class="active"{/if}
+	{if isset($adminMenu[{$activeMenu}]) && $adminMenu[$activeMenu]['title'] == $item.title}class="active"{/if}
 {/function}
 
 {function name=generateLinkMenu item=item}
