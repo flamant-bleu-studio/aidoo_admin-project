@@ -32,7 +32,7 @@ $(document).ready(function(){
 	/** Fonction qui load le contenue d'un json **/
 	function jsonLoad()
 	{
-		if(typeof datasPubEdit !== "undefined") // Si le json existe (voir .tpl)
+		if(typeof datasPubEdit !== "undefined" && $("#datas").val() != "") // Si le json existe (voir .tpl)
 		{
 			datas = jQuery.parseJSON($("#datas").val());
 			var i = 0;
